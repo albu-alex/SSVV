@@ -4,10 +4,7 @@ import org.example.domain.Student;
 import org.example.repository.StudentXMLRepository;
 import org.example.service.Service;
 import org.example.validation.StudentValidator;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,6 +44,7 @@ public class AddStudentTest {
         Student newStudent = new Student("1", "Alex", 931);
         service.saveStudent("1", "Alex", 931);
         assertEquals(newStudent, service.findAllStudents().iterator().next());
+        service.deleteStudent("1");
     }
 
     @Test
@@ -82,25 +80,27 @@ public class AddStudentTest {
 
     @Test
     void testAddStudent_InvalidStudent_GroupBelowLowerBoundary() {
-        assertEquals(1, service.saveStudent("6", "Alex", 109));
+        assertEquals(1, service.saveStudent("6", "Alex", 110));
     }
 
     @Test
     void testAddStudent_ValidStudent_GroupEqualToLowerBoundary() {
-        Student newStudent = new Student("7", "Alex", 110);
-        service.saveStudent("7", "Alex", 931);
+        Student newStudent = new Student("7", "Alex", 111);
+        service.saveStudent("7", "Alex", 111);
         assertEquals(newStudent, service.findAllStudents().iterator().next());
+        service.deleteStudent("7");
     }
 
     @Test
     void testAddStudent_InvalidStudent_GroupAboveHigherBoundary() {
-        assertEquals(1, service.saveStudent("8", "Alex", 939));
+        assertEquals(1, service.saveStudent("8", "Alex", 938));
     }
 
     @Test
     void testAddStudent_ValidStudent_GroupEqualToHigherBoundary() {
-        Student newStudent = new Student("9", "Alex", 938);
-        service.saveStudent("7", "Alex", 931);
+        Student newStudent = new Student("9", "Alex", 937);
+        service.saveStudent("9", "Alex", 937);
         assertEquals(newStudent, service.findAllStudents().iterator().next());
+        service.deleteStudent("9");
     }
 }
