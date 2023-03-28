@@ -26,4 +26,4 @@ jobs:
       run: mvn -B test --file pom.xml
       
     - name: Run AddStudentTest
-      run: mvn -B -Dtest=AddStudentTest.java test
+      run: mvn -B -Dtest=AddStudentTest.java test --file pom.xml
