@@ -50,7 +50,33 @@ public class AddStudentTest {
     }
 
     @Test
-    void testAddStudent_InvalidStudentGroup() {
-        assertEquals(1, service.saveStudent("1111", "a", 10));
+    void testAddStudent_StudentGroupTooSmall() {
+        assertEquals(1, service.saveStudent("113", "a", 10));
+    }
+
+    @Test
+    public void testAddStudent_StudentGroupTooLarge() {
+        assertEquals(1, service.saveStudent("114", "a", 100000));
+    }
+
+    @Test
+    public void testAddStudent_EmptyStudentName() {
+        assertEquals(1, service.saveStudent("115", "", 931));
+    }
+
+    @Test
+    public void testAddStudent_NullStudentName() {
+        assertEquals(1, service.saveStudent("116", null, 931));
+    }
+
+    @Test
+    public void testAddStudent_EmptyStudentID() {
+        assertEquals(1, service.saveStudent("", "a", 931));
+
+    }
+
+    @Test
+    public void testAddStudent_NullStudentID() {
+        assertEquals(1, service.saveStudent(null, "a", 931));
     }
 }
