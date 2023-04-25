@@ -1,11 +1,10 @@
 package org.example;
 
-import org.example.domain.Student;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import org.example.domain.Tema;
-import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
-import org.example.validation.StudentValidator;
 import org.example.validation.TemaValidator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,7 +18,8 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AddAssignmentTest {
+public class AddAssignmentTest
+{
     private Service service;
 
     @BeforeAll
