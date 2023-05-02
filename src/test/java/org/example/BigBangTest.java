@@ -4,10 +4,10 @@ import org.example.domain.*;
 import org.example.repository.*;
 import org.example.service.Service;
 import org.example.validation.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
-
 public class BigBangTest {
     Validator<Student> studentValidator = new StudentValidator();
     Validator<Tema> temaValidator = new TemaValidator();
@@ -39,5 +39,25 @@ public class BigBangTest {
         assertEquals(0, service.saveStudent("10", "aa", 222));
         assertEquals(0, service.saveTema("23", "aa", 13,12));
         assertEquals(1, service.saveNota("10","23",10,1,"Perfect!"));
+    }
+
+    @Test
+    public void TestAddStudent_ValidStudent_StudentAddedCorrectly() {
+        saveStudent();
+        Assertions.assertNotNull(service.findAllStudents().iterator().next());
+    }
+
+    @Test
+    public void TestAddStudentAndAddAssignment_ValidStudentAndAssignment_BothAddedCorrectly() {
+        saveStudent();
+        Assertions.assertNotNull(service.findAllStudents().iterator().next());
+        saveTema();
+        Assertions.assertNotNull(service.findAllTeme().iterator());
+    }
+
+    @Test
+    public void TestAddStudentAndAddAssignmentAndAddNota_ValidGradeAndStudentAndAssignment_AllAddedCorrectly() {
+        saveAll();
+        Assertions.assertNotNull(service.findAllNote().iterator().next());
     }
 }
