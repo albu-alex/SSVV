@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
-public class BigBangTest {
+public class BigBangTesting {
     Validator<Student> studentValidator = new StudentValidator();
     Validator<Tema> temaValidator = new TemaValidator();
     Validator<Nota> notaValidator = new NotaValidator();
