@@ -12,7 +12,7 @@ public class StudentXMLRepository extends AbstractXMLRepository<String, Student>
         loadFromXmlFile();
     }
 
-    protected Element getElementFromEntity(Student student, Document XMLdocument) {
+    public Element getElementFromEntity(Student student, Document XMLdocument) {
         Element element = XMLdocument.createElement("student");
         element.setAttribute("ID", student.getID());
 
@@ -22,7 +22,7 @@ public class StudentXMLRepository extends AbstractXMLRepository<String, Student>
         return element;
     }
 
-    protected Student getEntityFromNode(Element node) {
+    public Student getEntityFromNode(Element node) {
         String ID = node.getAttributeNode("ID").getValue();
         String nume = node.getElementsByTagName("Nume").item(0).getTextContent();
         int grupa = Integer.parseInt(node.getElementsByTagName("Grupa").item(0).getTextContent());

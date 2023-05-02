@@ -78,7 +78,7 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
         }
     }
 
-    protected Element createElement(Document XMLdocument, String tag, String value) {
+    public Element createElement(Document XMLdocument, String tag, String value) {
         Element element = XMLdocument.createElement(tag);
         element.setTextContent(value);
         return element;

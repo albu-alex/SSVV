@@ -12,7 +12,7 @@ public class TemaXMLRepository extends AbstractXMLRepository<String, Tema> {
         loadFromXmlFile();
     }
 
-    protected Element getElementFromEntity(Tema tema, Document XMLdocument) {
+    public Element getElementFromEntity(Tema tema, Document XMLdocument) {
         Element element = XMLdocument.createElement("tema");
         element.setAttribute("ID", tema.getID());
 
@@ -23,7 +23,7 @@ public class TemaXMLRepository extends AbstractXMLRepository<String, Tema> {
         return element;
     }
 
-    protected Tema getEntityFromNode(Element node) {
+    public Tema getEntityFromNode(Element node) {
         String ID = node.getAttributeNode("ID").getValue();
         String descriere = node.getElementsByTagName("Descriere").item(0).getTextContent();
         int deadline = Integer.parseInt(node.getElementsByTagName("Deadline").item(0).getTextContent());
